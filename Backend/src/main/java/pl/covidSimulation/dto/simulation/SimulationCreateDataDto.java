@@ -11,6 +11,8 @@ public class SimulationCreateDataDto {
     @NotNull
     private String n; // simulation name
     @NotNull
+    private Integer p;
+    @NotNull
     private Integer i; // initial number of infected
     @NotNull
     private Integer r; //An indicator of how many people one infected person infects,

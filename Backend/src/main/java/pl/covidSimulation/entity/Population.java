@@ -1,9 +1,6 @@
 package pl.covidSimulation.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,4 +18,18 @@ public class Population {
     private Integer pv; //number of healthy people susceptible to infection
     private Integer pm; // number of death people
     private Integer pr; // The number of people who have recovered and acquired immunity
+    @ManyToOne
+    @JoinColumn(name = "simulation_data_id")
+    private SimulationData simulationData;
+
+
+    public Population(SimulationData simulationData){
+        this.pi = simulationData.getI();
+        this.pv = simulationData.getP() - simulationData.getI();
+        this.pm = 0;
+        this.pr = 0;
+        this.simulationData = simulationData;
+    }
 }
+
+
