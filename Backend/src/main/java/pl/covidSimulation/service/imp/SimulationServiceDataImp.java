@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pl.covidSimulation.dto.simulation.Population.PopulationReadDto;
+import pl.covidSimulation.dto.population.PopulationReadDto;
 import pl.covidSimulation.dto.simulation.SimulationCreateDataDto;
 import pl.covidSimulation.entity.SimulationData;
 import pl.covidSimulation.repository.SimulationDataRepository;
@@ -30,8 +30,8 @@ public class SimulationServiceDataImp implements SimulationServiceData {
     public ResponseEntity<String> createSimulation(SimulationCreateDataDto simulationCreateDataDto) {
 
             SimulationData simulationData = new SimulationData(simulationCreateDataDto);
-            SimulationData savedSimulationData = simulationDataRepository.save(simulationData);
-            PopulationReadDto population = populationService.createPopulation(simulationData);
+            simulationDataRepository.save(simulationData);
+            populationService.createSimulationData(simulationData);
 
         return ResponseEntity.ok("Your data has been added");
 

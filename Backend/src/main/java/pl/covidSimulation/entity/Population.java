@@ -30,6 +30,14 @@ public class Population {
         this.pr = 0;
         this.simulationData = simulationData;
     }
+
+    public Population(Population population) {
+        this.pi = population.getPi();
+        this.pv = population.getPv();
+        this.pm = population.getPm();
+        this.pr = population.getPr();
+        this.simulationData = population.getSimulationData();
+    }
 }
 
 

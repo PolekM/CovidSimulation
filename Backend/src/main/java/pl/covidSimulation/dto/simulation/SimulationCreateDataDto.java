@@ -17,7 +17,7 @@ public class SimulationCreateDataDto {
     @NotNull
     private Integer r; //An indicator of how many people one infected person infects,
     @NotNull
-    private Integer m; // mortality rate
+    private Double m; // mortality rate
     @NotNull
     private Integer ti; // The number of days that elapse between infection and recovery of the patient
     @NotNull

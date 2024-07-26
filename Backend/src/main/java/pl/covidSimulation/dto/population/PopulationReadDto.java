@@ -1,4 +1,4 @@
-package pl.covidSimulation.dto.simulation.Population;
+package pl.covidSimulation.dto.population;
 
 import lombok.Getter;
 import lombok.Setter;
