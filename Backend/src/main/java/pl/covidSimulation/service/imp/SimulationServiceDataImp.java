@@ -7,10 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import pl.covidSimulation.dto.population.PopulationReadDto;
 import pl.covidSimulation.dto.simulation.SimulationCreateDataDto;
+import pl.covidSimulation.dto.simulation.SimulationReadDto;
 import pl.covidSimulation.entity.SimulationData;
 import pl.covidSimulation.repository.SimulationDataRepository;
 import pl.covidSimulation.service.PopulationService;
 import pl.covidSimulation.service.SimulationServiceData;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -35,5 +39,9 @@ public class SimulationServiceDataImp implements SimulationServiceData {
 
         return ResponseEntity.ok("Your data has been added");
 
+    }
+    @Override
+    public List<SimulationReadDto> getAllSimulation() {
+        return simulationDataRepository.findAll().stream().map(SimulationReadDto::new).collect(Collectors.toList());
     }
 }
