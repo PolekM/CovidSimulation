@@ -8,6 +8,7 @@ import pl.covidSimulation.entity.SimulationData;
 @Setter
 public class SimulationReadDto {
 
+    private Integer id;
     private String n;
     private Integer p;
     private Integer i;
@@ -26,5 +27,6 @@ public class SimulationReadDto {
         this.ti = simulationData.getTi();
         this.tm = simulationData.getTm();
         this.ts = simulationData.getTs();
+        this.id = simulationData.getId();
     }
 }

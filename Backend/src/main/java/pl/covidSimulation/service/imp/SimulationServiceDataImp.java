@@ -5,10 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pl.covidSimulation.dto.population.PopulationReadDto;
 import pl.covidSimulation.dto.simulation.SimulationCreateDataDto;
 import pl.covidSimulation.dto.simulation.SimulationReadDto;
 import pl.covidSimulation.entity.SimulationData;
+import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
 import pl.covidSimulation.repository.SimulationDataRepository;
 import pl.covidSimulation.service.PopulationService;
 import pl.covidSimulation.service.SimulationServiceData;
@@ -33,15 +33,25 @@ public class SimulationServiceDataImp implements SimulationServiceData {
     @Transactional
     public ResponseEntity<String> createSimulation(SimulationCreateDataDto simulationCreateDataDto) {
 
-            SimulationData simulationData = new SimulationData(simulationCreateDataDto);
-            simulationDataRepository.save(simulationData);
-            populationService.createSimulationData(simulationData);
+        SimulationData simulationData = new SimulationData(simulationCreateDataDto);
+        simulationDataRepository.save(simulationData);
+        populationService.createSimulationData(simulationData);
 
         return ResponseEntity.ok("Your data has been added");
 
     }
+
     @Override
     public List<SimulationReadDto> getAllSimulation() {
         return simulationDataRepository.findAll().stream().map(SimulationReadDto::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public ResponseEntity<String> deleteSimulation(Integer id) {
+        simulationDataRepository.findById(id).orElseThrow(() -> new SimulationNotFoundException("simulation Not Found"));
+        simulationDataRepository.deleteById(id);
+
+        return ResponseEntity.ok("Simulation has been removed");
+
     }
 }

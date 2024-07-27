@@ -21,13 +21,18 @@ public class SimulationDataController {
         this.simulationServiceData = simulationServiceData;
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<SimulationReadDto> getAllSimulation(){
         return simulationServiceData.getAllSimulation();
     }
     @PostMapping("/create")
     public ResponseEntity<String> createSimulation(@Valid @RequestBody SimulationCreateDataDto simulationCreateDataDto){
         return simulationServiceData.createSimulation(simulationCreateDataDto);
+    }
+
+    @DeleteMapping("/remove/{id}")
+    public ResponseEntity<String> deleteSimulation(@PathVariable Integer id){
+        return simulationServiceData.deleteSimulation(id);
     }
 
 

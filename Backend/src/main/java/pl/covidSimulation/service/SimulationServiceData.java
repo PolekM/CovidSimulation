@@ -8,5 +8,8 @@ import java.util.List;
 
 public interface SimulationServiceData {
     ResponseEntity<String> createSimulation(SimulationCreateDataDto simulationCreateDataDto);
+
     List<SimulationReadDto> getAllSimulation();
+
+    ResponseEntity<String> deleteSimulation(Integer id);
 }
