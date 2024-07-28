@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-simulation-details',
@@ -7,6 +7,17 @@ import { Component } from '@angular/core';
   templateUrl: './simulation-details.component.html',
   styleUrl: './simulation-details.component.css'
 })
-export class SimulationDetailsComponent {
+export class SimulationDetailsComponent implements OnInit{
+
+
+  ngOnInit(): void {
+ 
+  }
+
+
+
+ 
+  
+
 
 }

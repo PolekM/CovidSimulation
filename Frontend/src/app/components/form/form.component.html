@@ -1,0 +1,49 @@
+<p-dialog header="Add Simulation" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" (onHide)="hidebox()">
+    <form [formGroup]="simulationForm">
+            <p>
+                <label for="n"> N: </label>
+                <input id="n" type="text" pInputText formControlName="n" />
+            </p>
+
+            <p>
+                <label for="p"> P: </label>
+                <p-inputNumber id="p" mode="decimal" formControlName="p"/> 
+             </p>
+
+             <p>
+                <label for="i"> I: </label>
+                <p-inputNumber id="i" mode="decimal" formControlName="i"/> 
+            </p>  
+
+            <p>
+                <label for="r"> R: </label>
+                <p-inputNumber id="r" mode="decimal" formControlName="r"/> 
+            </p>
+
+            <p>
+                <label for="m"> M: </label>
+                <p-inputNumber id="m" mode="decimal" formControlName="m" [minFractionDigits]="1" 
+                [maxFractionDigits]="2" />  
+            </p>
+
+            <p>
+                <label for="ti"> Ti: </label>
+                <p-inputNumber id="ti" mode="decimal" formControlName="ti"/> 
+            </p>
+
+            <p>
+                <label for="tm"> Tm: </label>
+                <p-inputNumber id="tm" mode="decimal" formControlName="tm"/> 
+            </p>
+
+            <p>
+                <label for="ts"> Ts: </label>
+                <p-inputNumber id="ts" mode="decimal" formControlName="ts"/>     
+            </p> 
+      </form>
+
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (onClick)="hidebox()" />
+        <p-button label="Save" (onClick)="createSimulation()"  />
+    </div>
+</p-dialog>

@@ -1,1 +1,50 @@
-<p>simulation-list works!</p>
+<div class="col-12">
+    <p-toolbar>
+        <div class="p-toolbar-group-start">
+
+        </div>
+        <div class="p-toolbar-group-center">
+           <p>SIMULATION LIST</p>
+        </div>
+        <div class="p-toolbar-group-end">
+            <p-button pTooltip="Add new simulation" icon="pi pi-plus" class="mr-2" severity="success" (click)="showDialog()"/>
+        </div>
+    </p-toolbar>
+</div>
+<div class="col-12">
+    <div class="card">
+        <p-table [value]="simulationList" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>N</th>
+                    <th>P</th>
+                    <th>I</th>
+                    <th>R</th>
+                    <th>M</th>
+                    <th>Ti</th>
+                    <th>Tm</th>
+                    <th>Ts</th>
+                    <th>Details</th>
+                    <th>Delete</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-simulationList>
+                <tr>
+                    <td>{{ simulationList.n }}</td>
+                    <td>{{ simulationList.p }}</td>
+                    <td>{{ simulationList.i }}</td>
+                    <td>{{ simulationList.r }}</td>
+                    <td>{{ simulationList.m }}</td>
+                    <td>{{ simulationList.ti }}</td>
+                    <td>{{ simulationList.tm }}</td>
+                    <td>{{ simulationList.ts}}</td>
+                    <td><p-button icon="pi pi-search" [rounded]="true" severity="info" pTooltip="Display details"  /></td>
+                    <td><p-button icon="pi pi-trash" [rounded]="true"severity="danger" pTooltip="Delete simulation" (click)="deleteSimulation(simulationList.id)"/></td>
+
+                
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<app-form [(visible)]="visible" (afterSave)="afterSave()"></app-form>
