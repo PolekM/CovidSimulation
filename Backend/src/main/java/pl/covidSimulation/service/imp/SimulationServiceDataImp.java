@@ -42,6 +42,17 @@ public class SimulationServiceDataImp implements SimulationServiceData {
     }
 
     @Override
+    @Transactional
+    public ResponseEntity<String> updateSimulationData(Integer id, SimulationSaveDataDto simulationSaveDataDto) {
+        SimulationData simulationData = simulationDataRepository.findById(id).orElseThrow(() -> new SimulationNotFoundException("Simulation does not exist "));
+        simulationData.updateData(simulationSaveDataDto);
+        populationService.updatePopulation(id,simulationData);
+
+        simulationDataRepository.save(simulationData);
+        return ResponseEntity.ok("Your data has been updated");
+    }
+
+    @Override
     public List<SimulationReadDto> getAllSimulation() {
         return simulationDataRepository.findAll().stream().map(SimulationReadDto::new).collect(Collectors.toList());
     }

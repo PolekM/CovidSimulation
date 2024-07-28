@@ -12,4 +12,6 @@ public interface SimulationServiceData {
     List<SimulationReadDto> getAllSimulation();
 
     ResponseEntity<String> deleteSimulation(Integer id);
+
+    ResponseEntity<String> updateSimulationData(Integer id, SimulationSaveDataDto simulationSaveDataDto);
 }

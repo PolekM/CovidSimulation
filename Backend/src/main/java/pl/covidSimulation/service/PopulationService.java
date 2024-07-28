@@ -10,4 +10,6 @@ public interface PopulationService {
     void createSimulationData(SimulationData simulationData);
 
     List<PopulationReadDto> getPopulationBySimulationId(Integer id);
+
+    void updatePopulation(Integer id, SimulationData simulationData);
 }

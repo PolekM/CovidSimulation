@@ -37,9 +37,18 @@ public class PopulationServiceImp implements PopulationService {
 
     @Transactional
     public void createSimulationData(SimulationData simulationData) {
+        populationRepository.saveAll(generatePopulation(simulationData));
+    }
 
+    @Override
+    @Transactional
+    public void updatePopulation(Integer id, SimulationData simulationData) {
+        populationRepository.deleteAllBySimulationDataId(id);
+        populationRepository.saveAll(generatePopulation(simulationData));
+    }
+
+    public List<Population> generatePopulation(SimulationData simulationData){
         List<Population> covidSimulationDataList = new ArrayList<>();
-
         Integer[] newInfection = new Integer[simulationData.getTs()];
         Integer[] newRecoveries = new Integer[simulationData.getTs()];
         Integer[] newDeaths = new Integer[simulationData.getTs()];
@@ -47,8 +56,8 @@ public class PopulationServiceImp implements PopulationService {
 
         initFirstPopulation(simulationData, covidSimulationDataList, newInfection);
         createAllDay(newInfection, newDeaths, newRecoveries, simulationData, covidSimulationDataList);
-        populationRepository.saveAll(covidSimulationDataList);
 
+        return covidSimulationDataList;
     }
 
     public void fillArrays(Integer[] newInfection, Integer[] newRecoveries, Integer[] newDeaths) {

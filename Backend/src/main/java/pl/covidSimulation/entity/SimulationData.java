@@ -37,4 +37,16 @@ public class SimulationData {
         this.tm = simulationSaveDataDto.getTm();
         this.ts = simulationSaveDataDto.getTs();
     }
+
+    public SimulationData updateData(SimulationSaveDataDto simulationSaveDataDto){
+        this.n = simulationSaveDataDto.getN();
+        this.p = simulationSaveDataDto.getP();
+        this.i = simulationSaveDataDto.getI();
+        this.r = simulationSaveDataDto.getR();
+        this.m = simulationSaveDataDto.getM();
+        this.ti = simulationSaveDataDto.getTi();
+        this.tm = simulationSaveDataDto.getTm();
+        this.ts = simulationSaveDataDto.getTs();
+        return this;
+    }
 }
