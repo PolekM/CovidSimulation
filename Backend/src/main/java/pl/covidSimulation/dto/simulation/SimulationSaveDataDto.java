@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SimulationCreateDataDto {
+public class SimulationSaveDataDto {
 
     @NotNull
     private String n; // simulation name

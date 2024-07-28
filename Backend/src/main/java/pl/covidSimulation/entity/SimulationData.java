@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.covidSimulation.dto.simulation.SimulationCreateDataDto;
+import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 
 import java.util.List;
 
@@ -27,14 +27,14 @@ public class SimulationData {
     @OneToMany(mappedBy = "simulationData", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Population> population;
 
-    public SimulationData(SimulationCreateDataDto simulationCreateDataDto){
-        this.n = simulationCreateDataDto.getN();
-        this.p = simulationCreateDataDto.getP();
-        this.i = simulationCreateDataDto.getI();
-        this.r = simulationCreateDataDto.getR();
-        this.m = simulationCreateDataDto.getM();
-        this.ti = simulationCreateDataDto.getTi();
-        this.tm = simulationCreateDataDto.getTm();
-        this.ts = simulationCreateDataDto.getTs();
+    public SimulationData(SimulationSaveDataDto simulationSaveDataDto){
+        this.n = simulationSaveDataDto.getN();
+        this.p = simulationSaveDataDto.getP();
+        this.i = simulationSaveDataDto.getI();
+        this.r = simulationSaveDataDto.getR();
+        this.m = simulationSaveDataDto.getM();
+        this.ti = simulationSaveDataDto.getTi();
+        this.tm = simulationSaveDataDto.getTm();
+        this.ts = simulationSaveDataDto.getTs();
     }
 }

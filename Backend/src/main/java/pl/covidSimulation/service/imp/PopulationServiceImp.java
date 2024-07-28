@@ -29,7 +29,7 @@ public class PopulationServiceImp implements PopulationService {
     @Override
     public List<PopulationReadDto> getPopulationBySimulationId(Integer id) {
         List<Population> allBySimulationDataId = populationRepository.findAllBySimulationDataId(id);
-        if(allBySimulationDataId==null){
+        if(allBySimulationDataId.isEmpty()){
             throw new PopulationNotFoundException("Population Not Found");
         }
         return  allBySimulationDataId.stream().map(population -> new PopulationReadDto(id,population)).collect(Collectors.toList());

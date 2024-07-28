@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pl.covidSimulation.dto.simulation.SimulationCreateDataDto;
+import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 import pl.covidSimulation.dto.simulation.SimulationReadDto;
 import pl.covidSimulation.entity.SimulationData;
 import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
@@ -31,9 +31,9 @@ public class SimulationServiceDataImp implements SimulationServiceData {
 
     @Override
     @Transactional
-    public ResponseEntity<String> createSimulation(SimulationCreateDataDto simulationCreateDataDto) {
+    public ResponseEntity<String> createSimulation(SimulationSaveDataDto simulationSaveDataDto) {
 
-        SimulationData simulationData = new SimulationData(simulationCreateDataDto);
+        SimulationData simulationData = new SimulationData(simulationSaveDataDto);
         simulationDataRepository.save(simulationData);
         populationService.createSimulationData(simulationData);
 
