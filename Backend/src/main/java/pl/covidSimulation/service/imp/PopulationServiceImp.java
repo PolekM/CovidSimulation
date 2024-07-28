@@ -3,14 +3,18 @@ package pl.covidSimulation.service.imp;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.covidSimulation.dto.population.PopulationReadDto;
 import pl.covidSimulation.entity.Population;
 import pl.covidSimulation.entity.SimulationData;
+import pl.covidSimulation.exception.population.PopulationNotFoundException;
+import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
 import pl.covidSimulation.repository.PopulationRepository;
 import pl.covidSimulation.service.PopulationService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PopulationServiceImp implements PopulationService {
@@ -20,6 +24,15 @@ public class PopulationServiceImp implements PopulationService {
     @Autowired
     public PopulationServiceImp(PopulationRepository populationRepository) {
         this.populationRepository = populationRepository;
+    }
+
+    @Override
+    public List<PopulationReadDto> getPopulationBySimulationId(Integer id) {
+        List<Population> allBySimulationDataId = populationRepository.findAllBySimulationDataId(id);
+        if(allBySimulationDataId==null){
+            throw new PopulationNotFoundException("Population Not Found");
+        }
+        return  allBySimulationDataId.stream().map(population -> new PopulationReadDto(id,population)).collect(Collectors.toList());
     }
 
     @Transactional
