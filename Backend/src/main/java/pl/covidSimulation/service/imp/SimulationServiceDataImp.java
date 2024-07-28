@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 public class SimulationServiceDataImp implements SimulationServiceData {
 
     private final SimulationDataRepository simulationDataRepository;
