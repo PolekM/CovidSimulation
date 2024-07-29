@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.covidSimulation.exception.population.PopulationNotFoundException;
 import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
 
 import java.util.Date;
@@ -23,7 +24,7 @@ public class APIExceptionHandler {
         return ExceptionBuilder(HttpStatus.BAD_REQUEST, exception.getMessage());
     }
 
-    @ExceptionHandler(SimulationNotFoundException.class)
+    @ExceptionHandler({SimulationNotFoundException.class, PopulationNotFoundException.class})
     public ResponseEntity<Error> handleNotFoundException(Exception exception) {
         return ExceptionBuilder(HttpStatus.NOT_FOUND, exception.getMessage());
     }
