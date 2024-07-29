@@ -38,7 +38,7 @@
                     <td>{{ simulationList.ti }}</td>
                     <td>{{ simulationList.tm }}</td>
                     <td>{{ simulationList.ts}}</td>
-                    <td><p-button icon="pi pi-search" [rounded]="true" severity="info" pTooltip="Display details"  /></td>
+                    <td><p-button icon="pi pi-search" [rounded]="true" severity="info" pTooltip="Display details" [routerLink]="['/population',simulationList.id]"/></td>
                     <td><p-button icon="pi pi-trash" [rounded]="true"severity="danger" pTooltip="Delete simulation" (click)="deleteSimulation(simulationList.id)"/></td>
 
                 
@@ -47,4 +47,4 @@
         </p-table>
     </div>
 </div>
-<app-form [(visible)]="visible" (afterSave)="afterSave()"></app-form>
+<app-form [(visible)]="visible" (afterSave)="afterChange()"></app-form>
