@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Population {
+public class no niPopulation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

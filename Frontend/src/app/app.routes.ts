@@ -5,5 +5,6 @@ import { SimulationDetailsComponent } from './components/simulation-details/simu
 export const routes: Routes = [
     {path:'',component:SimulationListComponent},
     {path:'simulation',component:SimulationListComponent},
-    {path:'population/:id',component:SimulationDetailsComponent}
+    {path:'population/:id',component:SimulationDetailsComponent},
+    {path:"**",redirectTo:'/simulation'}
 ];

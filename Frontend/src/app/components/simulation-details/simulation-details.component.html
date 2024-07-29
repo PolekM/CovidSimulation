@@ -15,9 +15,18 @@
                 <td>{{ population.pv }}</td>
                 <td>{{ population.pm }}</td>
                 <td>{{ population.pr }}</td>
-                <td><p-button icon="pi pi-pencil" [rounded]="true"severity="warning" pTooltip="Delete simulation"/></td>
+                <td><p-button icon="pi pi-pencil" [rounded]="true"severity="warning" pTooltip="Edit"/></td>
 
             </tr>
         </ng-template>
 </p-table>
+</div>
+<div class="grid">
+    <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6">
+        <p-chart type="line" [data]="infection" [options]="options" />
+    </div>
+    <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="recovery" [options]="options" /></div>
+    <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="dead" [options]="options" /></div>
+    <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="allData" [options]="options" /></div>
+    <div class="col-12 text-center" [routerLink]="['/simulation']"><p-button icon="pi pi-arrow-left" severity="secondary" pTooltip="Back to simulation list"/></div>
 </div>
