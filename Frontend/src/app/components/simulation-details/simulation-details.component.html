@@ -28,6 +28,6 @@
     <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="recovery" [options]="options" /></div>
     <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="dead" [options]="options" /></div>
     <div class="col-12 sm:col-12 md:col-12 lg:col-6 xl:col-6"><p-chart type="line" [data]="allData" [options]="options" /></div>
-    <div class="col-12 text-center" [routerLink]="['/simulation']"><p-button icon="pi pi-arrow-left" severity="secondary" pTooltip="Back to simulation list" /></div>
+    <div class="col-12 text-center" [routerLink]="['/simulation']"><p-button icon="pi pi-arrow-left" label="Back" severity="secondary" pTooltip="Back to simulation list" /></div>
 </div>
 <app-form  [(visible)]="visible" [buttonType]="'Update'" [simulation]="simulation" (afterSave)="afterChange()"></app-form>
