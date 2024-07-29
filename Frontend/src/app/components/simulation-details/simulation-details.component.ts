@@ -46,7 +46,7 @@ export class SimulationDetailsComponent implements OnInit{
     this.simulationDetailsService.getPopulationBySimulationId(id).subscribe(response => {this.population = response; this.infectionChartData();this.RecoveryChartData(),this.DeadChartData(),this.allCharts()})
   }
   getSimulationById(id: number){
-    this.simulationListService.getSimulationById(id).subscribe(resposne =>{this.simulation = resposne; console.log(this.simulation)})
+    this.simulationListService.getSimulationById(id).subscribe(resposne =>{this.simulation = resposne})
   }
 
   showDialog() {
