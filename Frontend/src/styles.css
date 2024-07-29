@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
+
+@media only screen and (max-width: 615px) {
+    .p-toolbar-group-end,.p-toolbar-group-center
+    {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+   
+}
