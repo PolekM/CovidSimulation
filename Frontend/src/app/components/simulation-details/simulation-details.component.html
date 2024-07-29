@@ -1,12 +1,30 @@
 <div class="col-12">
-    <p-table [value]="[population[0]]" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-toolbar>
+        <div class="p-toolbar-group-start">
+
+        </div>
+        <div class="p-toolbar-group-center">
+           <p>SIMULATION "{{simulation.n | uppercase}}" DETAILS</p>
+        </div>
+        <div class="p-toolbar-group-end">
+            <p-button icon="pi pi-pencil" [rounded]="true"severity="warning" pTooltip="Edit"(click)="showDialog()"/>
+        </div>
+    </p-toolbar>
+</div>
+<div class="col-12">
+    <p-table 
+        [value]="population"  
+        [paginator]="true"
+        [rows]="5"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [rowsPerPageOptions]="[5, 10]">
         <ng-template pTemplate="header">
             <tr>
                 <th>Pi</th>
                 <th>Pv</th>
                 <th>Pm</th>
                 <th>Pr</th>
-                <th>Edit</th>
+               
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-population>
@@ -15,8 +33,6 @@
                 <td>{{ population.pv }}</td>
                 <td>{{ population.pm }}</td>
                 <td>{{ population.pr }}</td>
-                <td><p-button icon="pi pi-pencil" [rounded]="true"severity="warning" pTooltip="Edit"(click)="showDialog()"/></td>
-
             </tr>
         </ng-template>
 </p-table>

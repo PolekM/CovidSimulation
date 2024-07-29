@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { SimulationDetailsService } from '../../services/simulation-details.service';
 import { PopulationReadDto } from '../../models/PopulationReadDto';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -9,11 +9,14 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FormComponent } from "../form/form.component";
 import { SimulationReadDto } from '../../models/SimulationReadDto';
 import { SimulationListService } from '../../services/simulation-list.service';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-simulation-details',
   standalone: true,
-  imports: [TableModule, ButtonModule, ChartModule, TooltipModule, RouterModule, FormComponent,FormComponent],
+  imports: [TableModule, ButtonModule, ChartModule, TooltipModule, RouterModule, FormComponent,FormComponent,ToolbarModule,CommonModule],
   templateUrl: './simulation-details.component.html',
   styleUrl: './simulation-details.component.css'
 })
