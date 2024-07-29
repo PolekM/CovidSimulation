@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -7,6 +7,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { SimulationListService } from '../../services/simulation-list.service';
 import { SimulationSaveDataDto } from '../models/SimulationSaveDataDto';
 import { ActivatedRoute } from '@angular/router';
+import { SimulationReadDto } from '../models/SimulationReadDto';
 
 
 
@@ -17,8 +18,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent {
-
+export class FormComponent implements OnChanges{
+  @Input() visible = false
+  @Input() buttonType: String = "Add"
+  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() afterSave: EventEmitter<void> = new EventEmitter<void>();
+  @Input() simulation: SimulationReadDto = {} as SimulationReadDto
+  simulationId: number = {} as number
 
   simulationForm = this.formBuilder.group({
     n: ['', Validators.required],
@@ -28,16 +34,27 @@ export class FormComponent {
     m: [0.2,[Validators.required, Validators.min(0),Validators.max(1)]],
     ti: [1,Validators.required],
     tm: [1,Validators.required],
-    ts: [1,Validators.required],
+    ts: [ 1,Validators.required],
     
   });
-  @Input() visible = false
-  @Input() buttonType: String = "Add"
-  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() afterSave: EventEmitter<void> = new EventEmitter<void>();
-  simulationId: number = {} as number
+ 
 
   constructor(private formBuilder: FormBuilder,private simulationService: SimulationListService,private route: ActivatedRoute){}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['simulation'] ){
+      this.simulationForm.patchValue({
+        n: this.simulation.n || '',
+        p: this.simulation.p || 1,
+        i: this.simulation.i || 1,
+        r: this.simulation.r || 1,
+        m: this.simulation.m || 0.2,
+        ti: this.simulation.ti || 1,
+        tm: this.simulation.tm || 1,
+        ts: this.simulation.ts || 1,
+      });
+    }
+  }
 
   createSimulation(){
     if(this.simulationForm.invalid){
@@ -48,7 +65,6 @@ export class FormComponent {
  
   }
   updateSimulation(){
-    console.log("update")
     if(this.simulationForm.invalid){
       return
     }

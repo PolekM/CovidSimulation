@@ -31,6 +31,10 @@ public class SimulationDataController {
     public ResponseEntity<String> createSimulation(@Valid @RequestBody SimulationSaveDataDto simulationSaveDataDto) {
         return simulationServiceData.createSimulation(simulationSaveDataDto);
     }
+    @GetMapping("{id}")
+    public SimulationReadDto getSimulationById(@PathVariable Integer id){
+        return simulationServiceData.getSimulationById(id);
+    }
 
     @DeleteMapping("/remove/{id}")
     public ResponseEntity<String> deleteSimulation(@PathVariable Integer id) {

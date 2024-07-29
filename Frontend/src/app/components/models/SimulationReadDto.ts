@@ -1,6 +1,6 @@
 export interface SimulationReadDto{
     id: number;
-    n: String;
+    n: string;
     p: number;
     i: number;
     r: number;

@@ -7,6 +7,9 @@ import { PopulationReadDto } from '../components/models/PopulationReadDto';
   providedIn: 'root'
 })
 export class SimulationDetailsService {
+  getSimulationById(id: any) {
+      throw new Error('Method not implemented.');
+  }
 
   baseUrl: String ='http://localhost:8080/population'
 

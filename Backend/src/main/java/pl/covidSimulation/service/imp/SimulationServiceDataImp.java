@@ -63,4 +63,9 @@ public class SimulationServiceDataImp implements SimulationServiceData {
         return ResponseEntity.ok("Simulation has been removed");
 
     }
+
+    @Override
+    public SimulationReadDto getSimulationById(Integer id) {
+        return simulationDataRepository.findById(id).map(SimulationReadDto::new).orElseThrow(() -> new SimulationNotFoundException("simulation Not Found"));
+    }
 }

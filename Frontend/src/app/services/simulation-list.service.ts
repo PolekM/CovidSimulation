@@ -27,4 +27,8 @@ export class SimulationListService {
   updateSimulation(id:number,simulationData: SimulationSaveDataDto):Observable<String>{
     return this.http.put<String>(`${this.baseUrl}/update/${id}`,simulationData,{ responseType: 'text' as 'json' })
   }
+
+  getSimulationById(id: number):Observable<SimulationReadDto>{
+    return this.http.get<SimulationReadDto>(`${this.baseUrl}/${id}`)
+  }
 }

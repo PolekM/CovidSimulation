@@ -7,6 +7,8 @@ import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormComponent } from "../form/form.component";
+import { SimulationReadDto } from '../models/SimulationReadDto';
+import { SimulationListService } from '../../services/simulation-list.service';
 
 @Component({
   selector: 'app-simulation-details',
@@ -25,20 +27,26 @@ export class SimulationDetailsComponent implements OnInit{
   options: any
   simulationId: number = {} as number
   visible: boolean = false;
+  simulation: SimulationReadDto = {} as SimulationReadDto
   
 
-  constructor(private simulationDetailsService: SimulationDetailsService, private route: ActivatedRoute,private router: Router){}
+  constructor(private simulationDetailsService: SimulationDetailsService,private simulationListService: SimulationListService, private route: ActivatedRoute,private router: Router){}
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
       this.simulationId = params['id']
       this.getPopulationBySimulationId(this.simulationId)
+      this.getSimulationById(this.simulationId)
+    
     })
-
+    
   }
 
   getPopulationBySimulationId(id: number){
     this.simulationDetailsService.getPopulationBySimulationId(id).subscribe(response => {this.population = response; this.infectionChartData();this.RecoveryChartData(),this.DeadChartData(),this.allCharts()})
+  }
+  getSimulationById(id: number){
+    this.simulationListService.getSimulationById(id).subscribe(resposne =>{this.simulation = resposne; console.log(this.simulation)})
   }
 
   showDialog() {
