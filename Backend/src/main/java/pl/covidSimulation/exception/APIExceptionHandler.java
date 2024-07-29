@@ -11,20 +11,20 @@ import java.util.Date;
 @ControllerAdvice
 public class APIExceptionHandler {
 
-    public ResponseEntity<Error> ExceptionBuilder(HttpStatus httpStatus,String massage){
+    public ResponseEntity<Error> ExceptionBuilder(HttpStatus httpStatus, String massage) {
 
-        Error error = new Error(httpStatus.value(),massage,new Date());
+        Error error = new Error(httpStatus.value(), massage, new Date());
         return new ResponseEntity<>(error, httpStatus);
 
     }
 
     @ExceptionHandler()
-    public ResponseEntity<Error> handleBadRequestException(Exception exception){
-        return ExceptionBuilder(HttpStatus.BAD_REQUEST,exception.getMessage());
+    public ResponseEntity<Error> handleBadRequestException(Exception exception) {
+        return ExceptionBuilder(HttpStatus.BAD_REQUEST, exception.getMessage());
     }
 
     @ExceptionHandler(SimulationNotFoundException.class)
-    public ResponseEntity<Error> handleNotFoundException(Exception exception){
-        return ExceptionBuilder(HttpStatus.NOT_FOUND,exception.getMessage());
+    public ResponseEntity<Error> handleNotFoundException(Exception exception) {
+        return ExceptionBuilder(HttpStatus.NOT_FOUND, exception.getMessage());
     }
 }

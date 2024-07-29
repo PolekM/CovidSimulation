@@ -2,3 +2,7 @@ label{
     width: 40px;
     display: inline-block;
 }
+.error{
+    color: red;
+    text-align: center;
+}

@@ -7,7 +7,6 @@ import pl.covidSimulation.dto.population.PopulationReadDto;
 import pl.covidSimulation.entity.Population;
 import pl.covidSimulation.entity.SimulationData;
 import pl.covidSimulation.exception.population.PopulationNotFoundException;
-import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
 import pl.covidSimulation.repository.PopulationRepository;
 import pl.covidSimulation.service.PopulationService;
 
@@ -29,10 +28,10 @@ public class PopulationServiceImp implements PopulationService {
     @Override
     public List<PopulationReadDto> getPopulationBySimulationId(Integer id) {
         List<Population> allBySimulationDataId = populationRepository.findAllBySimulationDataId(id);
-        if(allBySimulationDataId.isEmpty()){
+        if (allBySimulationDataId.isEmpty()) {
             throw new PopulationNotFoundException("Population Not Found");
         }
-        return  allBySimulationDataId.stream().map(population -> new PopulationReadDto(id,population)).collect(Collectors.toList());
+        return allBySimulationDataId.stream().map(population -> new PopulationReadDto(id, population)).collect(Collectors.toList());
     }
 
     @Transactional
@@ -47,7 +46,7 @@ public class PopulationServiceImp implements PopulationService {
         populationRepository.saveAll(generatePopulation(simulationData));
     }
 
-    public List<Population> generatePopulation(SimulationData simulationData){
+    public List<Population> generatePopulation(SimulationData simulationData) {
         List<Population> covidSimulationDataList = new ArrayList<>();
         Integer[] newInfection = new Integer[simulationData.getTs()];
         Integer[] newRecoveries = new Integer[simulationData.getTs()];

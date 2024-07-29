@@ -38,8 +38,8 @@ public class SimulationDataController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateSimulationData(@PathVariable Integer id, @RequestBody SimulationSaveDataDto simulationSaveDataDto){
-        return simulationServiceData.updateSimulationData(id,simulationSaveDataDto);
+    public ResponseEntity<String> updateSimulationData(@PathVariable Integer id, @RequestBody SimulationSaveDataDto simulationSaveDataDto) {
+        return simulationServiceData.updateSimulationData(id, simulationSaveDataDto);
     }
 
 }

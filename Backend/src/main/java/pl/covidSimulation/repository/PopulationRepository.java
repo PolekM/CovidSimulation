@@ -7,9 +7,10 @@ import pl.covidSimulation.entity.Population;
 import java.util.List;
 
 @Repository
-public interface PopulationRepository extends JpaRepository<Population,Integer> {
+public interface PopulationRepository extends JpaRepository<Population, Integer> {
 
     List<Population> findAllBySimulationDataId(Integer id);
+
     void deleteAllBySimulationDataId(Integer id);
 
 }

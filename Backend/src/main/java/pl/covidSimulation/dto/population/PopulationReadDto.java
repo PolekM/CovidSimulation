@@ -14,7 +14,7 @@ public class PopulationReadDto {
     private Integer pm;
     private Integer pr;
 
-    public PopulationReadDto(Integer id, Population population){
+    public PopulationReadDto(Integer id, Population population) {
         this.simulationId = id;
         this.pi = population.getPi();
         this.pv = population.getPv();

@@ -1,8 +1,8 @@
 package pl.covidSimulation.service;
 
 import org.springframework.http.ResponseEntity;
-import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 import pl.covidSimulation.dto.simulation.SimulationReadDto;
+import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 
 import java.util.List;
 

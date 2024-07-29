@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.covidSimulation.entity.SimulationData;
 
 @Repository
-public interface SimulationDataRepository extends JpaRepository<SimulationData,Integer> {
+public interface SimulationDataRepository extends JpaRepository<SimulationData, Integer> {
 }

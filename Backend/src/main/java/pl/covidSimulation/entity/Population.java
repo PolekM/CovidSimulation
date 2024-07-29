@@ -23,7 +23,7 @@ public class Population {
     private SimulationData simulationData;
 
 
-    public Population(SimulationData simulationData){
+    public Population(SimulationData simulationData) {
         this.pi = simulationData.getI();
         this.pv = simulationData.getP() - simulationData.getI();
         this.pm = 0;

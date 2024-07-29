@@ -18,7 +18,7 @@ public class SimulationReadDto {
     private Integer tm;
     private Integer ts;
 
-    public SimulationReadDto(SimulationData simulationData){
+    public SimulationReadDto(SimulationData simulationData) {
         this.n = simulationData.getN();
         this.p = simulationData.getP();
         this.i = simulationData.getI();

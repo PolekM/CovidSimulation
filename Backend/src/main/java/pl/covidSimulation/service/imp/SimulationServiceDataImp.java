@@ -1,12 +1,11 @@
 package pl.covidSimulation.service.imp;
 
 import jakarta.transaction.Transactional;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 import pl.covidSimulation.dto.simulation.SimulationReadDto;
+import pl.covidSimulation.dto.simulation.SimulationSaveDataDto;
 import pl.covidSimulation.entity.SimulationData;
 import pl.covidSimulation.exception.simulateData.SimulationNotFoundException;
 import pl.covidSimulation.repository.SimulationDataRepository;
@@ -45,7 +44,7 @@ public class SimulationServiceDataImp implements SimulationServiceData {
     public ResponseEntity<String> updateSimulationData(Integer id, SimulationSaveDataDto simulationSaveDataDto) {
         SimulationData simulationData = simulationDataRepository.findById(id).orElseThrow(() -> new SimulationNotFoundException("Simulation does not exist "));
         simulationData.updateData(simulationSaveDataDto);
-        populationService.updatePopulation(id,simulationData);
+        populationService.updatePopulation(id, simulationData);
 
         simulationDataRepository.save(simulationData);
         return ResponseEntity.ok("Your data has been updated");

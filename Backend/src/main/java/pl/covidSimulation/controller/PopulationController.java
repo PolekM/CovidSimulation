@@ -20,7 +20,7 @@ public class PopulationController {
     }
 
     @GetMapping("/{id}")
-    public List<PopulationReadDto>getPopulationBySimulationId(@PathVariable Integer id){
+    public List<PopulationReadDto> getPopulationBySimulationId(@PathVariable Integer id) {
         return populationService.getPopulationBySimulationId(id);
     }
 }

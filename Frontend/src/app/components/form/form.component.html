@@ -3,42 +3,79 @@
             <p>
                 <label for="n"> N: </label>
                 <input id="n" type="text" pInputText formControlName="n" />
+                @if(simulationForm.controls.n.invalid && (simulationForm.controls.n.touched || simulationForm.controls.n.dirty)){
+                    @if(simulationForm.controls.n.errors?.["required"]){
+                    <div class="error"><small>*Name is required</small></div>
+                    }
+                }
             </p>
 
             <p>
                 <label for="p"> P: </label>
-                <p-inputNumber id="p" mode="decimal" formControlName="p"/> 
+                <p-inputNumber id="p" mode="decimal" formControlName="p"/>
+                @if(simulationForm.controls.p.invalid && (simulationForm.controls.p.touched || simulationForm.controls.p.dirty)){
+                    @if(simulationForm.controls.p.errors?.["required"]){
+                    <div class="error"><small>*Population are required</small></div>
+                    }
+                } 
              </p>
 
              <p>
                 <label for="i"> I: </label>
-                <p-inputNumber id="i" mode="decimal" formControlName="i"/> 
+                <p-inputNumber id="i" mode="decimal" formControlName="i"/>
+                @if(simulationForm.controls.i.invalid && (simulationForm.controls.i.touched || simulationForm.controls.i.dirty)){
+                    @if(simulationForm.controls.i.errors?.["required"]){
+                    <div class="error"><small>*Infected people are required</small></div>
+                }
+                }  
             </p>  
 
             <p>
                 <label for="r"> R: </label>
                 <p-inputNumber id="r" mode="decimal" formControlName="r"/> 
+                @if(simulationForm.controls.r.invalid && (simulationForm.controls.r.touched || simulationForm.controls.r.dirty)){
+                    @if(simulationForm.controls.r.errors?.["required"]){
+                    <div class="error"><small>* infectiousness are required</small></div>
+                    }
+                }  
             </p>
 
             <p>
                 <label for="m"> M: </label>
                 <p-inputNumber id="m" mode="decimal" formControlName="m" [minFractionDigits]="1" 
                 [maxFractionDigits]="2" />  
+                @if(simulationForm.controls.m.invalid && (simulationForm.controls.m.touched || simulationForm.controls.m.dirty)){
+                    @if(simulationForm.controls.i.errors?.["required"]){
+                        <div class="error"><small>* Mortality rate are required</small></div>
+                    }
+                    @if(simulationForm.controls.m.errors?.["min"] || simulationForm.controls.m.errors?.["max"] ){
+                        <div class="error"><small>* Mortality rate must be between 0-1</small></div>
+                    }
+                } 
             </p>
 
             <p>
                 <label for="ti"> Ti: </label>
                 <p-inputNumber id="ti" mode="decimal" formControlName="ti"/> 
+                @if(simulationForm.controls.ti.errors?.["required"]){
+                    <div class="error"><small>* Time to heal is required</small></div>
+                }
             </p>
 
             <p>
                 <label for="tm"> Tm: </label>
                 <p-inputNumber id="tm" mode="decimal" formControlName="tm"/> 
+                @if(simulationForm.controls.tm.errors?.["required"]){
+                    <div class="error"><small>* Time to dead is required</small></div>
+                }
             </p>
 
             <p>
                 <label for="ts"> Ts: </label>
-                <p-inputNumber id="ts" mode="decimal" formControlName="ts"/>     
+                <p-inputNumber id="ts" mode="decimal" formControlName="ts"/>    
+                @if(simulationForm.controls.ts.errors?.["required"]){
+                    <div class="error"><small>* number of days is required</small></div>
+                } 
             </p> 
       </form>
 
