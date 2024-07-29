@@ -5,9 +5,10 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SimulationListService } from '../../services/simulation-list.service';
-import { SimulationSaveDataDto } from '../models/SimulationSaveDataDto';
+import { SimulationSaveDataDto } from '../../models/SimulationSaveDataDto';
 import { ActivatedRoute } from '@angular/router';
-import { SimulationReadDto } from '../models/SimulationReadDto';
+import { SimulationReadDto } from '../../models/SimulationReadDto';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -34,12 +35,12 @@ export class FormComponent implements OnChanges{
     m: [0.2,[Validators.required, Validators.min(0),Validators.max(1)]],
     ti: [1,Validators.required],
     tm: [1,Validators.required],
-    ts: [ 1,Validators.required],
+    ts: [ 1,[Validators.required, Validators.min(1)]],
     
   });
  
 
-  constructor(private formBuilder: FormBuilder,private simulationService: SimulationListService,private route: ActivatedRoute){}
+  constructor(private formBuilder: FormBuilder,private simulationService: SimulationListService,private route: ActivatedRoute, private messageService: MessageService){}
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['simulation'] ){
@@ -61,7 +62,9 @@ export class FormComponent implements OnChanges{
       return
     }
       const simulationData = this.simulationForm.value as SimulationSaveDataDto;
-      this.simulationService.createSimulation(simulationData).subscribe(response => {this.hidebox(), this.afterSave.emit(); })
+      this.simulationService.createSimulation(simulationData).subscribe(response => {this.hidebox(), this.afterSave.emit(); 
+      this.messageService.add({severity:'success',summary: 'Create',detail: `${response}`})
+      })
  
   }
   updateSimulation(){
@@ -72,7 +75,9 @@ export class FormComponent implements OnChanges{
     this.route.params.subscribe(params =>{
       this.simulationId = params['id']
     })
-    this.simulationService.updateSimulation(this.simulationId,simulationData).subscribe(response => {this.hidebox(), this.afterSave.emit(); })
+    this.simulationService.updateSimulation(this.simulationId,simulationData).subscribe(response => {this.hidebox(), this.afterSave.emit();
+      this.messageService.add({severity:'info',summary: 'Update',detail: `${response}`})
+     })
   }
   
   hidebox(){

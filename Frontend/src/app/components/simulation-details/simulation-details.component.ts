@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SimulationDetailsService } from '../../services/simulation-details.service';
-import { PopulationReadDto } from '../models/PopulationReadDto';
+import { PopulationReadDto } from '../../models/PopulationReadDto';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormComponent } from "../form/form.component";
-import { SimulationReadDto } from '../models/SimulationReadDto';
+import { SimulationReadDto } from '../../models/SimulationReadDto';
 import { SimulationListService } from '../../services/simulation-list.service';
 
 @Component({

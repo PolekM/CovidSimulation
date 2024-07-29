@@ -76,6 +76,9 @@
                 @if(simulationForm.controls.ts.errors?.["required"]){
                     <div class="error"><small>* number of days is required</small></div>
                 } 
+                @if(simulationForm.controls.ts.errors?.["min"]){
+                    <div class="error"><small>* Days should be higher than 0</small></div>
+                } 
             </p> 
       </form>
 

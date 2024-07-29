@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SimulationReadDto } from '../components/models/SimulationReadDto';
-import { SimulationSaveDataDto } from '../components/models/SimulationSaveDataDto';
+import { SimulationReadDto } from '../models/SimulationReadDto';
+import { SimulationSaveDataDto } from '../models/SimulationSaveDataDto';
 
 @Injectable({
   providedIn: 'root'
