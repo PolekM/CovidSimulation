@@ -39,6 +39,8 @@ public class SimulationDataController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateSimulationData(@PathVariable Integer id, @RequestBody SimulationSaveDataDto simulationSaveDataDto) {
+        System.out.println(id);
+        System.out.println(simulationSaveDataDto);
         return simulationServiceData.updateSimulationData(id, simulationSaveDataDto);
     }
 

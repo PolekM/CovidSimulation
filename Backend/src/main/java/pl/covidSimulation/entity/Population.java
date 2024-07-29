@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class no niPopulation {
+public class Population {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class no niPopulation {
     private SimulationData simulationData;
 
 
-    public Population(SimulationData simulationData) {
+    public Population(SimulationData simulationData){
         this.pi = simulationData.getI();
         this.pv = simulationData.getP() - simulationData.getI();
         this.pm = 0;

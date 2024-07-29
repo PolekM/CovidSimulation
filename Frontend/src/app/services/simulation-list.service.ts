@@ -24,4 +24,7 @@ export class SimulationListService {
   createSimulation(simulationData: SimulationSaveDataDto):Observable<String>{
     return this.http.post(`${this.baseUrl}/create`,simulationData,{responseType:'text'})
   }
+  updateSimulation(id:number,simulationData: SimulationSaveDataDto):Observable<String>{
+    return this.http.put<String>(`${this.baseUrl}/update/${id}`,simulationData,{ responseType: 'text' as 'json' })
+  }
 }

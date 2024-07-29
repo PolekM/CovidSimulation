@@ -81,6 +81,11 @@
 
     <div class="flex justify-content-end gap-2">
         <p-button label="Cancel" severity="secondary" (onClick)="hidebox()" />
+        @if(buttonType==='Add'){
         <p-button label="Save" (onClick)="createSimulation()"  />
+    }
+        @if(buttonType==='Update'){
+        <p-button label="Update" (onClick)="updateSimulation()"  />
+   }
     </div>
 </p-dialog>

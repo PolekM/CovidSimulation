@@ -6,11 +6,12 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
 import { TooltipModule } from 'primeng/tooltip';
+import { FormComponent } from "../form/form.component";
 
 @Component({
   selector: 'app-simulation-details',
   standalone: true,
-  imports: [TableModule, ButtonModule,ChartModule,TooltipModule,RouterModule],
+  imports: [TableModule, ButtonModule, ChartModule, TooltipModule, RouterModule, FormComponent,FormComponent],
   templateUrl: './simulation-details.component.html',
   styleUrl: './simulation-details.component.css'
 })
@@ -24,6 +25,7 @@ export class SimulationDetailsComponent implements OnInit{
   options: any
   simulationId: number = {} as number
   visible: boolean = false;
+  
 
   constructor(private simulationDetailsService: SimulationDetailsService, private route: ActivatedRoute,private router: Router){}
 
@@ -42,6 +44,9 @@ export class SimulationDetailsComponent implements OnInit{
   showDialog() {
     this.visible = true;
 }
+    afterChange(){
+        this.ngOnInit()
+  }
 
   infectionChartData(){
     const documentStyle = getComputedStyle(document.documentElement);

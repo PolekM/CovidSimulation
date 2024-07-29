@@ -28,4 +28,18 @@ public class SimulationSaveDataDto {
     private Integer tm; //The number of days that elapse between infection and the death of the patient
     @NotNull
     private Integer ts; // Number of days for which the simulation is to be carried out
+
+    @Override
+    public String toString() {
+        return "SimulationSaveDataDto{" +
+                "n='" + n + '\'' +
+                ", p=" + p +
+                ", i=" + i +
+                ", r=" + r +
+                ", m=" + m +
+                ", ti=" + ti +
+                ", tm=" + tm +
+                ", ts=" + ts +
+                '}';
+    }
 }
